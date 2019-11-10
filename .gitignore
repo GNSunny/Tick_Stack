@@ -1,3 +1,2 @@
 dockerfile-compose.yml
-conf/telegraf.conf
 conf/supervisord.conf
