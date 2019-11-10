@@ -50,4 +50,7 @@ EXPOSE 8083
 EXPOSE 8086
 EXPOSE 8088
 
-CMD     ["/usr/bin/supervisord"]
+CMD     ["/usr/bin/influxdb"]
+CMD     ["/usr/bin/telegraf"]
+CMD     ["/usr/bin/chronograf"]
+CMD     ["/usr/bin/kapacitor"]
