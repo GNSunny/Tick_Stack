@@ -8,7 +8,7 @@ RUN apt-get update && apt-get install -y wget curl telnet
 RUN wget https://dl.influxdata.com/influxdb/releases/influxdb_1.7.9_amd64.deb \
   && dpkg -i influxdb_1.7.9_amd64.deb
 
-RUN wget wget https://dl.influxdata.com/telegraf/releases/telegraf_1.12.4-1_amd64.deb \
+RUN wget https://dl.influxdata.com/telegraf/releases/telegraf_1.12.4-1_amd64.deb \
   && dpkg -i telegraf_1.12.4-1_amd64.deb
 
 RUN wget https://dl.influxdata.com/chronograf/releases/chronograf_1.7.14_amd64.deb \
