@@ -12,9 +12,9 @@ if [ -z "${VOLUME_CONTAINER}" ]; then
   VOLUME_CONTAINER=$(
     docker create \
       --name tick-data \
-      -v "/data/influx/data" \
-      -v "/data/influx/wal" \
-      -v "/data/influx/meta" \
+      -v "/var/lib/influxdb/data" \
+      -v "/var/lib/influxdb/wal" \
+      -v "/var/lib/influxdb/meta" \
       -v "/data/kapacitor" \
       -v "/data/chronograf" \
       sunnynehar56/tick \

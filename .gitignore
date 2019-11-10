@@ -1,1 +1,2 @@
 dockerfile-compose.yml
+conf/telegraf.conf

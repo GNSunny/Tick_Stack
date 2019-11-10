@@ -37,9 +37,9 @@ ADD ./conf/kapacitor.conf /opt/kapacitor/kapacitor.conf
 RUN rm *.deb
 RUN mkdir -p /data/chronograf && chown -R chronograf:chronograf /data/chronograf && chmod 777 /data/chronograf
 
-VOLUME /data/influx/data
-VOLUME /data/influx/meta
-VOLUME /data/influx/wal
+VOLUME /var/lib/influxdb/meta
+VOLUME /var/lib/influxdb/data
+VOLUME /var/lib/influxdb/wal
 VOLUME /data/kapacitor
 VOLUME /data/chronograf
 
