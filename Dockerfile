@@ -28,7 +28,8 @@ RUN apt-get update && apt-get install -y supervisor net-tools
 # find sources of the problem and prevent it from happening in the future.
 
 # Configure supervisord
-ADD ./conf/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+# ADD ./conf/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+
 # Configure TICK files
 ADD ./conf/influxdb.conf /etc/influxdb/influxdb.conf
 ADD ./conf/telegraf.conf /opt/telegraf/telegraf.conf
@@ -47,11 +48,8 @@ VOLUME /data/chronograf
 EXPOSE  80
 EXPOSE 8125/udp
 EXPOSE 10000
-
 EXPOSE 8083
-# influxdb port
 EXPOSE 8086
-# chronograf port
 EXPOSE 8088
 
-CMD     ["/usr/bin/supervisord"]
+# CMD     ["/usr/bin/supervisord"]
