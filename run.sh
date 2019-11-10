@@ -24,8 +24,8 @@ if [ -z "${VOLUME_CONTAINER}" ]; then
 fi
 
 docker run \
-  -d \
-  -p 8086:8086 \
+  -itd \
+  -p 8186:8186 \
   -p 8125:8125/udp \
   -p 10000:10000 \
   --name tick \

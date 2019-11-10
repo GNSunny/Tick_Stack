@@ -1,7 +1,5 @@
-FROM ubuntu:latest
-MAINTAINER sunnynehar <sunnynehar56@gmail.com>
-
 FROM debian:latest
+MAINTAINER sunnynehar <sunnynehar56@gmail.com>
 
 RUN apt-get update && apt-get install -y wget curl telnet
 
@@ -52,4 +50,4 @@ EXPOSE 8083
 EXPOSE 8086
 EXPOSE 8088
 
-# CMD     ["/usr/bin/supervisord"]
+CMD     ["/usr/bin/supervisord"]
