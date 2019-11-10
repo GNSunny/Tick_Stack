@@ -1,18 +1,18 @@
 #!/bin/bash
-CONTAINER_VOLUME=$(docker ps -a | grep tick-data | egrep -o "[a-z0-9]{12}")
+#CONTAINER_VOLUME=$(docker ps -a | grep tick-data | egrep -o "[a-z0-9]{12}")
 
-  CONTAINER_VOLUME=$(
-    docker create \
+  # CONTAINER_VOLUME=$(
+    docker volume create \
       --name tick-data \
       -v "/var/lib/influxdb/data" \
       -v "/var/lib/influxdb/wal" \
       -v "/var/lib/influxdb/meta" \
       -v "/data/kapacitor" \
       -v "/data/chronograf" \
-      sunnynehar56/tick \
-  )
+      # sunnynehar56/tick \
+  #)
 
-echo ">> Created persisted data container: ${CONTAINER_VOLUME}"
+# echo ">> Created persisted data container: ${CONTAINER_VOLUME}"
 
  # docker create --name tick-data -v /var/lib/influxdb/data -v /var/lib/influxdb/wal -v /var/lib/influxdb/meta -v /data/kapacitor -v /data/chronograf  sunnynehar56/tick
 docker run \
