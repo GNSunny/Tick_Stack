@@ -49,7 +49,12 @@ EXPOSE 8083
 EXPOSE 8086
 EXPOSE 8088
 
-CMD     ["sh", "-c" "service influxdb auotorestart=true"]
-CMD     ["sh", "-c" "service telegraf auotorestart=true"]
-CMD     ["sh", "-c" "service chronograf auotorestart=true"]
-CMD     ["sh", "-c" "service kapacitor auotorestart=true"]
+# CMD     ["sh", "-c" "service influxdb auotorestart=true"]
+# CMD     ["sh", "-c" "service telegraf auotorestart=true"]
+# CMD     ["sh", "-c" "service chronograf auotorestart=true"]
+# CMD     ["sh", "-c" "service kapacitor auotorestart=true"]
+
+CMD ["/usr/bin/influxdb", "--config", "/etc/influxdb/influxdb.conf"]
+CMD ["/usr/bin/telegraf", "--config", "/etc/telegraf/telegraf.conf"]
+CMD ["/usr/bin/chronograf", "--config", "/etc/chronograf/config.conf"]
+CMD ["/usr/bin/kapacitor", "--config", "/etc/kapacitor/kapacitor.conf"]
