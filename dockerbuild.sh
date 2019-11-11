@@ -4,7 +4,7 @@ docker build -t sunnynehar56/tick .
 docker push sunnynehar56/tick
 
 
-docker volume create  -v /var/lib/influxdb/data -v /var/lib/influxdb/wal -v /var/lib/influxdb/meta 
+docker create  -v /var/lib/influxdb/data -v /var/lib/influxdb/wal -v /var/lib/influxdb/meta 
       -v /data/kapacitor \
       -v /data/chronograf \
       --name tick-data \
