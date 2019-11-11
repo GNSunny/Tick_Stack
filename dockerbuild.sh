@@ -21,7 +21,7 @@ if [ -z "$Data_container}" ]; then
       -v "/var/lib/influxdb/meta" \
       -v "/data/kapacitor" \
       -v "/data/chronograf" \
-      sunnynehar56/tick \
+      mefellows/tick \
       /dev/null
   )
   echo ">> Created persisted data container: ${Data_container}"
@@ -35,9 +35,7 @@ fi
 
 
 
-docker run -d -p 8186:8186 -p 8125:8125/udp -p 10000:10000 \
-  --name tick \
-  --volumes-from tick-data \
+docker run -d -p 8186:8186 -p 8125:8125/udp -p 10000:10000 --name tick --volumes-from tick-data \
   sunnynehar56/tick
 
 EXISTS=true
