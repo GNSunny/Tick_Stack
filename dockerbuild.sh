@@ -41,7 +41,7 @@ docker run -d -p 8186:8186 -p 8125:8125/udp -p 10000:10000 \
   sunnynehar56/tick
 
 EXISTS=true
-HOST=$(docker-machine env aws-sandbox | grep DOCKER_HOST | grep -o '[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}')
+HOST=$(docker-machine env dev | grep DOCKER_HOST | grep -o '[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}')
 echo ">> Waiting for Influx to be available on active Docker Host (${HOST})"
 
 if [ $EXISTS != true ]; then
