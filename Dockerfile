@@ -17,7 +17,8 @@ RUN wget https://dl.influxdata.com/kapacitor/releases/kapacitor-1.5.3.x86_64.rpm
 
 RUN influxd config > /etc/influxdb/influxdb.generated.conf
 
-RUN yum update -y && yum install -y supervisor net-tools
+RUN yum update -y && yum install -y supervisor python-setuptools net-tools
+RUN easy_install supervisor -y
 # Server Supervisor is an advanced network monitoring tool that can constantly watch different types of web-servers and network resources.
 # It periodically checks if monitored servers or network resources are online and providing required services.
 # If a monitored object unexpectedly goes offline or drops some of its important services,
@@ -59,4 +60,4 @@ EXPOSE 8088
 # CMD ["/usr/bin/chronograf", "--config", "/etc/chronograf/config.conf"]
 # CMD ["/usr/bin/kapacitor", "--config", "/etc/kapacitor/kapacitor.conf"]
 
-CMD     ["/usr/sbin/supervisord"]
+CMD     ["/usr/bin/supervisord"]
