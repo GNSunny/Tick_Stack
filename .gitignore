@@ -1,2 +1,3 @@
 dockerfile-compose.yml
 conf/supervisord.conf
+docker-tick

@@ -32,7 +32,6 @@ RUN apt-get update && apt-get install -y supervisor net-tools
 ADD ./conf/influxdb.conf /etc/influxdb/influxdb.conf
 ADD ./conf/telegraf.conf /etc/telegraf/telegraf.conf
 ADD ./conf/chronograf.conf /etc/chronograf/config.conf
-RUN mkdir /etc/kapacitor/
 ADD ./conf/kapacitor.conf /etc/kapacitor/kapacitor.conf
 RUN rm *.deb
 RUN mkdir -p /data/chronograf && chown -R chronograf:chronograf /data/chronograf && chmod 777 /data/chronograf
