@@ -50,6 +50,6 @@ EXPOSE 8086
 EXPOSE 8088
 
 CMD     ["sh", "-c" "service influxdb auotorestart=true"]
-CMD     ["/usr/bin/telegraf"]
-CMD     ["/usr/bin/chronograf"]
-CMD     ["/usr/bin/kapacitor"]
+CMD     ["sh", "-c" "service telegraf auotorestart=true"]
+CMD     ["sh", "-c" "service chronograf auotorestart=true"]
+CMD     ["sh", "-c" "service kapacitor auotorestart=true"]
