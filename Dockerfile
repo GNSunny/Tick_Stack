@@ -1,4 +1,4 @@
-FROM debian:latest
+FROM centos:latest
 MAINTAINER sunnynehar <sunnynehar56@gmail.com>
 
 RUN yum update && yum install -y wget curl telnet
