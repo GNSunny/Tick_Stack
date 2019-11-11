@@ -5,11 +5,11 @@ docker push sunnynehar56/tick
 
 Data_container=$(docker ps -a | grep tick-data | egrep -o "[a-z0-9]{12}")
 EXISTS=true
-TICK_RUNNING=$(docker ps -a | egrep "tick" | egrep -o "[a-z0-9]{12}")
+# TICK_RUNNING=$(docker ps -a | egrep "tick" | egrep -o "[a-z0-9]{12}")
 
-if [ -n "${TICK_RUNNING}" ]; then
-  docker rm -f tick
-fi
+# if [ -n "${TICK_RUNNING}" ]; then
+#   docker rm -f tick
+# fi
 
 if [ -z "$Data_container}" ]; then
   EXISTS=false
