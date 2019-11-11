@@ -21,7 +21,7 @@ if [ -z "$Data_container}" ]; then
       -v "/var/lib/influxdb/meta" \
       -v "/data/kapacitor" \
       -v "/data/chronograf" \
-      mefellows/tick \
+      sunnynehar56/tick \
       /dev/null
   )
   echo ">> Created persisted data container: ${Data_container}"
