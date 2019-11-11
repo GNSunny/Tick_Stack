@@ -21,7 +21,7 @@ if [ -z "${DATA_CONTAINER}" ]; then
       -v "/data/influx/meta" \
       -v "/data/kapacitor" \
       -v "/data/chronograf" \
-      mefellows/tick \
+      sunnynehar56/tick \
       /dev/null
   )
   echo ">> Created persisted data container: ${DATA_CONTAINER}"
@@ -34,7 +34,7 @@ docker run \
   -p 10000:10000 \
   --name tick \
   --volumes-from $DATA_CONTAINER \
-  mefellows/tick
+  sunnynehar56/tick
 
 HOST=$(docker-machine env dev | grep DOCKER_HOST | grep -o '[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}')
 echo ">> Waiting for Influx to be available on active Docker Host (${HOST})"
