@@ -18,8 +18,7 @@ if [ -z "${VOLUME_CONTAINER_GUID}" ]; then
       -v "/data/influx/meta" \
       -v "/data/kapacitor" \
       -v "/data/chronograf" \
-      sunnynehar56/tick \
-      /dev/null
+      sunnynehar56/tick
   )
   echo ">> Created persisted data container: ${VOLUME_CONTAINER_GUID}"
 fi
