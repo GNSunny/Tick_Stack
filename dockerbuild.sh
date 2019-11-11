@@ -28,7 +28,7 @@ if [ -z "$Data_container}" ]; then
 fi
 
 # docker create -v /var/lib/influxdb/data --name tick-data sunnynehar56/tick
-# docker create -v /var/lib/influxdb/wal --name tick-data sunnynehar56/tick
+# docker create -v /var/lib/influxdb/wal --name tick-data sunnynehar56/tick --error
 # docker create -v /var/lib/influxdb/meta --name tick-data sunnynehar56/tick
 # docker create -v /data/kapacitor --name tick-data sunnynehar56/tick
 # docker create -v /data/chronograf --name tick-data sunnynehar56/tick
