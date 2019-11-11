@@ -1,5 +1,4 @@
 FROM centos:7
-MAINTAINER sunnynehar <sunnynehar56@gmail.com>
 
 RUN yum update -y && yum install -y wget curl telnet
 
@@ -18,7 +17,7 @@ RUN wget https://dl.influxdata.com/kapacitor/releases/kapacitor-1.5.3.x86_64.rpm
 RUN influxd config > /etc/influxdb/influxdb.generated.conf
 
 RUN yum update -y && yum install -y supervisor python-setuptools net-tools
-RUN easy_install supervisor -y
+RUN easy_install supervisor
 # Server Supervisor is an advanced network monitoring tool that can constantly watch different types of web-servers and network resources.
 # It periodically checks if monitored servers or network resources are online and providing required services.
 # If a monitored object unexpectedly goes offline or drops some of its important services,
