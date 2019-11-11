@@ -1,4 +1,5 @@
 #!/bin/bash
+
 VOLUME_CONTAINER_GUID=$(docker ps -a | grep tick-data | egrep -o "[a-z0-9]{12}")
 EXISTS=true
 TICK_RUNNING=$(docker ps -a | egrep "tick" | egrep -o "[a-z0-9]{12}")
