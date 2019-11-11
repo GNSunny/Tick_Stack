@@ -4,16 +4,16 @@ MAINTAINER sunnynehar <sunnynehar56@gmail.com>
 RUN yum update -y && yum install -y wget curl telnet
 
 RUN wget https://dl.influxdata.com/influxdb/releases/influxdb-1.7.9.x86_64.rpm \
-  && yum localinstall influxdb-1.7.9.x86_64.rpm
+  && yum localinstall -y influxdb-1.7.9.x86_64.rpm
 
 RUN wget https://dl.influxdata.com/telegraf/releases/telegraf-1.12.4-1.x86_64.rpm \
-  && yum localinstall telegraf-1.12.4-1.x86_64.rpm
+  && yum localinstall -y telegraf-1.12.4-1.x86_64.rpm
 
 RUN wget https://dl.influxdata.com/chronograf/releases/chronograf-1.7.14.x86_64.rpm \
-  && yum localinstall chronograf-1.7.14.x86_64.rpm
+  && yum localinstall -y chronograf-1.7.14.x86_64.rpm
 
 RUN wget https://dl.influxdata.com/kapacitor/releases/kapacitor-1.5.3.x86_64.rpm \
-  && yum localinstall kapacitor-1.5.3.x86_64.rpm
+  && yum localinstall -y kapacitor-1.5.3.x86_64.rpm
 
 RUN influxd config > /etc/influxdb/influxdb.generated.conf
 
