@@ -59,4 +59,4 @@ EXPOSE 8088
 # CMD ["/usr/bin/chronograf", "--config", "/etc/chronograf/config.conf"]
 # CMD ["/usr/bin/kapacitor", "--config", "/etc/kapacitor/kapacitor.conf"]
 
-CMD     ["/usr/bin/supervisord"]
+CMD     ["/usr/sbin/supervisord"]
