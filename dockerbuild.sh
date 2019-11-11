@@ -4,11 +4,18 @@ docker build -t sunnynehar56/tick .
 docker push sunnynehar56/tick
 
 
-docker create  -v /var/lib/influxdb/data -v /var/lib/influxdb/wal -v /var/lib/influxdb/meta 
-      -v /data/kapacitor \
-      -v /data/chronograf \
-      --name tick-data \
-      sunnynehar56/tick
+#  docker create  -v /var/lib/influxdb/data -v /var/lib/influxdb/wal -v /var/lib/influxdb/meta 
+#       -v /data/kapacitor \
+#       -v /data/chronograf \
+#       --name tick-data \
+#       sunnynehar56/tick
+
+docker create -v /var/lib/influxdb/data --name tick-data sunnynehar56/tick
+docker create -v /var/lib/influxdb/wal --name tick-data sunnynehar56/tick
+docker create -v /var/lib/influxdb/meta --name tick-data sunnynehar56/tick
+docker create -v /data/kapacitor --name tick-data sunnynehar56/tick
+docker create -v /data/chronograf --name tick-data sunnynehar56/tick
+
 
 
 docker run -d -p 8186:8186 -p 8125:8125/udp -p 10000:10000 \
