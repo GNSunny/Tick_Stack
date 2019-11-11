@@ -13,7 +13,7 @@ EXISTS=true
 
 if [ -z "$Data_container}" ]; then
   EXISTS=false
-  VOLUME_CONTAINER_GUID=$(
+  Data_container=$(
     docker create \
       --name tick-data \
       -v "/var/lib/influxdb/data" \
