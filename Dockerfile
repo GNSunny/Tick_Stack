@@ -1,6 +1,6 @@
 FROM centos:7
 
-RUN yum update -y && yum install -y wepel-release get curl telnet
+RUN yum update -y && yum install -y epel-release wget curl telnet
 
 RUN wget https://dl.influxdata.com/influxdb/releases/influxdb-1.7.9.x86_64.rpm \
   && yum localinstall -y influxdb-1.7.9.x86_64.rpm

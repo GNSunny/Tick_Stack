@@ -2,7 +2,7 @@
 
 docker build -t sunnynehar56/tick .
 docker push sunnynehar56/tick
-sh sudo systemctl restart superviosord
+sh systemctl restart superviosord
 
 Data_container=$(docker ps -a | grep tick-data | egrep -o "[a-z0-9]{12}")
 EXISTS=true
