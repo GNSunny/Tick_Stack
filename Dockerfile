@@ -1,22 +1,23 @@
-FROM centos:7
+FROM debian:latest
+MAINTAINER sunnynehar <sunnynehar56@gmail.com>
 
-RUN yum update -y && yum install -y epel-release wget curl telnet
+RUN apt-get update && apt-get install -y wget curl telnet
 
-RUN wget https://dl.influxdata.com/influxdb/releases/influxdb-1.7.9.x86_64.rpm \
-  && yum localinstall -y influxdb-1.7.9.x86_64.rpm
+RUN wget https://dl.influxdata.com/influxdb/releases/influxdb_1.7.9_amd64.deb \
+  && dpkg -i influxdb_1.7.9_amd64.deb
 
-RUN wget https://dl.influxdata.com/telegraf/releases/telegraf-1.12.4-1.x86_64.rpm \
-  && yum localinstall -y telegraf-1.12.4-1.x86_64.rpm
+RUN wget https://dl.influxdata.com/telegraf/releases/telegraf_1.12.4-1_amd64.deb \
+  && dpkg -i telegraf_1.12.4-1_amd64.deb
 
-RUN wget https://dl.influxdata.com/chronograf/releases/chronograf-1.7.14.x86_64.rpm \
-  && yum localinstall -y chronograf-1.7.14.x86_64.rpm
+RUN wget https://dl.influxdata.com/chronograf/releases/chronograf_1.7.14_amd64.deb \
+  && dpkg -i chronograf_1.7.14_amd64.deb
 
-RUN wget https://dl.influxdata.com/kapacitor/releases/kapacitor-1.5.3.x86_64.rpm \
-  && yum localinstall -y kapacitor-1.5.3.x86_64.rpm
+RUN wget https://dl.influxdata.com/kapacitor/releases/kapacitor_1.5.3_amd64.deb \
+  && dpkg -i kapacitor_1.5.3_amd64.deb
 
 RUN influxd config > /etc/influxdb/influxdb.generated.conf
 
-RUN yum update -y && yum install -y supervisor net-tools
+RUN apt-get update && apt-get install -y supervisor net-tools
 # RUN easy_install supervisor
 # Server Supervisor is an advanced network monitoring tool that can constantly watch different types of web-servers and network resources.
 # It periodically checks if monitored servers or network resources are online and providing required services.

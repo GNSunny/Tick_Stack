@@ -1,6 +1,6 @@
 #!/bin/bash
 
-VOLUME_CONTAINER_GUID=$(docker ps -a | grep tick-data | egrep -o "[a-z0-9]{12}")
+DATA_CONTAINER=$(docker ps -a | grep tick-data | egrep -o "[a-z0-9]{12}")
 EXISTS=true
 TICK_RUNNING=$(docker ps -a | egrep "tick" | egrep -o "[a-z0-9]{12}")
 
@@ -8,9 +8,9 @@ if [ -n "${TICK_RUNNING}" ]; then
   docker rm -f tick
 fi
 
-if [ -z "${VOLUME_CONTAINER_GUID}" ]; then
+if [ -z "${DATA_CONTAINER}" ]; then
   EXISTS=false
-  VOLUME_CONTAINER_GUID=$(
+  DATA_CONTAINER=$(
     docker create \
       --name tick-data \
       -v "/data/influx/data" \
@@ -18,9 +18,10 @@ if [ -z "${VOLUME_CONTAINER_GUID}" ]; then
       -v "/data/influx/meta" \
       -v "/data/kapacitor" \
       -v "/data/chronograf" \
-      sunnynehar56/tick
+      sunnynehar56/tick \
+      /dev/null
   )
-  echo ">> Created persisted data container: ${VOLUME_CONTAINER_GUID}"
+  echo ">> Created persisted data container: ${DATA_CONTAINER}"
 fi
 
 docker run \
@@ -29,7 +30,7 @@ docker run \
   -p 8125:8125/udp \
   -p 10000:10000 \
   --name tick \
-  --volumes-from $VOLUME_CONTAINER_GUID \
+  --volumes-from $DATA_CONTAINER \
   sunnynehar56/tick
 
 HOST=$(docker-machine env dev | grep DOCKER_HOST | grep -o '[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}')
