@@ -2,8 +2,6 @@
 
 docker build -t sunnynehar56/tick .
 docker push sunnynehar56/tick
-
-
 Data_container=$(docker ps -a | grep tick-data | egrep -o "[a-z0-9]{12}")
 EXISTS=true
 TICK_RUNNING=$(docker ps -a | egrep "tick" | egrep -o "[a-z0-9]{12}")
