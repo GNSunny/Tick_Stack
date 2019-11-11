@@ -3,18 +3,35 @@
 docker build -t sunnynehar56/tick .
 docker push sunnynehar56/tick
 
+Data_container=$(docker ps -a | grep tick-data | egrep -o "[a-z0-9]{12}")
+EXISTS=true
+TICK_RUNNING=$(docker ps -a | egrep "tick" | egrep -o "[a-z0-9]{12}")
 
-#  docker create  -v /var/lib/influxdb/data -v /var/lib/influxdb/wal -v /var/lib/influxdb/meta 
-#       -v /data/kapacitor \
-#       -v /data/chronograf \
-#       --name tick-data \
-#       sunnynehar56/tick
+if [ -n "${TICK_RUNNING}" ]; then
+  docker rm -f tick
+fi
 
-docker create -v /var/lib/influxdb/data --name tick-data sunnynehar56/tick
-docker create -v /var/lib/influxdb/wal --name tick-data sunnynehar56/tick
-docker create -v /var/lib/influxdb/meta --name tick-data sunnynehar56/tick
-docker create -v /data/kapacitor --name tick-data sunnynehar56/tick
-docker create -v /data/chronograf --name tick-data sunnynehar56/tick
+if [ -z "$Data_container}" ]; then
+  EXISTS=false
+  VOLUME_CONTAINER_GUID=$(
+    docker create \
+      --name tick-data \
+      -v "/data/influx/data" \
+      -v "/data/influx/wal" \
+      -v "/data/influx/meta" \
+      -v "/data/kapacitor" \
+      -v "/data/chronograf" \
+      mefellows/tick \
+      /dev/null
+  )
+  echo ">> Created persisted data container: ${Data_container}"
+fi
+
+# docker create -v /var/lib/influxdb/data --name tick-data sunnynehar56/tick
+# docker create -v /var/lib/influxdb/wal --name tick-data sunnynehar56/tick
+# docker create -v /var/lib/influxdb/meta --name tick-data sunnynehar56/tick
+# docker create -v /data/kapacitor --name tick-data sunnynehar56/tick
+# docker create -v /data/chronograf --name tick-data sunnynehar56/tick
 
 
 
