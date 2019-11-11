@@ -1,4 +1,4 @@
-FROM centos:latest
+FROM centos:7
 MAINTAINER sunnynehar <sunnynehar56@gmail.com>
 
 RUN yum update -y && yum install -y wget curl telnet
